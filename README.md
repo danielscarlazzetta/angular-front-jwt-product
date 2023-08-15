@@ -1,10 +1,16 @@
 # FrontEndJwt
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+# instalar routes
+
+    -ng generate module app-routing --flat --module=app
+
+# creacion de carpetas
+
+    -
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+    -ng serve -o =============>http://localhost:4200/
 
 ## Code scaffolding
 
