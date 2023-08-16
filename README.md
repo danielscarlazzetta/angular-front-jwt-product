@@ -4,9 +4,10 @@
 
     -ng generate module app-routing --flat --module=app
 
-# creacion de carpetas
+# instalar toastR
 
-    -
+    -npm install ngx-toastr --save
+    -npm install @angular/animations --save
 
 ## Development server
 

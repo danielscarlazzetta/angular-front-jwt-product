@@ -3,28 +3,31 @@
         <h4 class="title">Registrar usuario</h4>
         <form>
             <div class="field">
-                <input autocomplete="off" id="name" placeholder="Daniel Scarlazzetta" class="input-field" name="name" type="text">
+                <input autocomplete="off" [(ngModel)]="name" id="name" placeholder="Nombre del usuario" class="input-field" name="name" type="text">
             </div>
             <div class="field">
-                <input autocomplete="off" id="username" placeholder="DanScar" class="input-field" name="username" type="text">
+                <input autocomplete="off" [(ngModel)]="username" id="username" placeholder="Username del Usuario" class="input-field" name="username" type="text" required>
             </div>
             <div class="field">
-                <input autocomplete="off" id="pass" placeholder="Password" class="input-field" name="pass" type="password">
+                <input autocomplete="off" [(ngModel)]="password" id="password" placeholder="Password" class="input-field" name="password" type="password" required>
             </div>
             <div class="field">
-                <input autocomplete="off" id="pass2" placeholder="Password" class="input-field" name="pass2" type="password">
+                <input autocomplete="off" [(ngModel)]="confirmPassword" id="confirmPassword" placeholder="Confirme Password" class="input-field" name="confirmPassword" type="password" required>
             </div>
             <div class="field">
-                <input autocomplete="off" id="logemail" placeholder="dan@dan.dan" class="input-field" name="logemail" type="email">
+                <input autocomplete="off" [(ngModel)]="email" id="email" placeholder="Email" class="input-field" name="email" type="email" required>
             </div>
             <div class="field">
-                <input autocomplete="off" id="phone" placeholder="Telefono" class="input-field" name="phone" type="text">
+                <input autocomplete="off" [(ngModel)]="phone" id="phone" placeholder="Telefono" class="input-field" name="phone" type="text">
             </div>
             <div class="field">
-                <input autocomplete="off" id="dress" placeholder="Direccion" class="input-field" name="dress" type="text">
+                <input autocomplete="off" [(ngModel)]="address" id="address" placeholder="Direccion" class="input-field" name="address" type="text">
+            </div>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="typeofuser" id="typeofuser" placeholder="Tipo de Usuario" class="input-field" name="typeofuser" type="text" required>
             </div>
             <button class="btn" type="submit" routerLink="/login">Regresar</button>
-            <button class="btn" type="submit" routerLink="/dashboard">Crear usuario</button>
+            <button class="btn" (click)="addUser()" type="submit">Crear usuario</button>
         </form> 
     </div>
 </div>
