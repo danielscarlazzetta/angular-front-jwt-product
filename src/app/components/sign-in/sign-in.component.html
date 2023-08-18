@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="card">
+    <div *ngIf="!loading" class="card">
         <h4 class="title">Registrar usuario</h4>
         <form>
             <div class="field">
@@ -30,4 +30,5 @@
             <button class="btn" (click)="addUser()" type="submit">Crear usuario</button>
         </form> 
     </div>
+    <app-spinner *ngIf="loading"></app-spinner>
 </div>

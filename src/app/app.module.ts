@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CrearProductoComponent } from './components/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardComponent,
     NavbarComponent,
     SpinnerComponent,
+    CrearProductoComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 4000,
+      timeOut: 5000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),

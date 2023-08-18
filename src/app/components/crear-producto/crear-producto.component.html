@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="card">
+        <h4 class="title">Registrar usuario</h4>
+        <form>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="name" id="name" placeholder="Nombre de producto" class="input-field" name="name" type="text" required>
+            </div>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="description" id="description" placeholder="description" class="input-field" name="description" type="text">
+            </div>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="price" id="price" placeholder="price" class="input-field" name="price" type="text" required>
+            </div>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="amount" id="amount" placeholder="cantidad" class="input-field" name="amount" type="number">
+            </div>
+            <div class="field">
+                <input autocomplete="off" [(ngModel)]="category" id="category" placeholder="Categoria" class="input-field" name="category" type="text">
+            </div>
+            <button class="btn" type="submit" routerLink="/dashboard">Regresar</button>
+            <button class="btn" (click)="addProduct()" type="submit">Crear Producto</button>
+        </form> 
+    </div>
+</div>

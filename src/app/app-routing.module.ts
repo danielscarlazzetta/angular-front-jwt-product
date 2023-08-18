@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CrearProductoComponent } from './components/crear-producto/crear-producto.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: SignInComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'crearproduct', component: CrearProductoComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full' },
 
 ]

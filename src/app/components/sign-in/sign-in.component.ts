@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,20 +20,20 @@ export class SignInComponent {
   phone: string = '';
   address: string = '';
   typeofuser: string = '';
+  loading: boolean = false;
 
-  constructor( private toastr : ToastrService,
-               private _userService : UserService,
-               private router : Router){
+  constructor(private toastr: ToastrService,
+    private _userService: UserService,
+    private router: Router) {
   }
 
-  ngOnInit(){
-
+  ngOnInit() {
   }
 
 
   addUser() {
     const fields = [this.username, this.password, this.confirmPassword, this.email, this.typeofuser];
-  
+
     for (const field of fields) {
       if (field === '') {
         this.toastr.error('Los campos Username, Password, email y tipo de usuario son obligatorios', 'Error');
@@ -40,12 +41,12 @@ export class SignInComponent {
       }
     }
 
-    if(this.password != this.confirmPassword){
+    if (this.password != this.confirmPassword) {
       this.toastr.error('Password no coinciden', 'Error');
       return;
     }
 
-    const fieldsUser : User = {
+    const fieldsUser: User = {
       name: this.name,
       username: this.username,
       password: this.password,
@@ -53,13 +54,40 @@ export class SignInComponent {
       phone: this.phone,
       address: this.address,
       typeofuser: this.typeofuser,
-    } 
+    }
 
-    this._userService.signIn(fieldsUser).subscribe(data => {
-      this.toastr.success(`El usuario ${this.username} se registro con exito!`, 'Registro');
-      this.router.navigate(['/login']);
-    })
+    this.loading = true;
 
+    this._userService.signIn(fieldsUser).subscribe({
+      next: (v) => {
+        this.loading = false;
+        this.toastr.success(`El usuario ${this.username} se registro con exito!`, 'Registro');
+        this.router.navigate(['/login']);
+      },
+      error: (e: HttpErrorResponse) => {
+        this.loading = false;
+        this.msjError(e);
+      },
+      complete: () => console.info('complete')
+    }
+    )
+
+
+    // this._userService.signIn(fieldsUser).subscribe(data => {
+    //   this.loading = false;
+    //   this.toastr.success(`El usuario ${this.username} se registro con exito!`, 'Registro');
+    //   this.router.navigate(['/login']);
+    // }, (event) => {
+    //   this.loading = false;
+    //   const errorMessage = event.error.msg ? event.error.msg : 'Upss Error con el servidor!';
+    //   this.toastr.error(errorMessage, 'Error');
+    // });
+
+  }
+
+  msjError(e: HttpErrorResponse) {
+    const errorMessage = e.error.msg ? e.error.msg : 'Upss Error con el servidor!';
+    this.toastr.error(errorMessage, 'Error');
   }
 
 }
