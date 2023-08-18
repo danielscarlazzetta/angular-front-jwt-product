@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/interfaces/user.interfaces';
+import { ErrorServicesService } from 'src/app/services/error.services.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -22,14 +23,14 @@ export class SignInComponent {
   typeofuser: string = '';
   loading: boolean = false;
 
-  constructor(private toastr: ToastrService,
-    private _userService: UserService,
-    private router: Router) {
+  constructor(  private toastr: ToastrService,
+                private _userService: UserService,
+                private router: Router,
+                private _errorService : ErrorServicesService) {
   }
 
   ngOnInit() {
   }
-
 
   addUser() {
     const fields = [this.username, this.password, this.confirmPassword, this.email, this.typeofuser];
@@ -66,28 +67,12 @@ export class SignInComponent {
       },
       error: (e: HttpErrorResponse) => {
         this.loading = false;
-        this.msjError(e);
+        this._errorService.msjError(e);
       },
       complete: () => console.info('complete')
-    }
-    )
-
-
-    // this._userService.signIn(fieldsUser).subscribe(data => {
-    //   this.loading = false;
-    //   this.toastr.success(`El usuario ${this.username} se registro con exito!`, 'Registro');
-    //   this.router.navigate(['/login']);
-    // }, (event) => {
-    //   this.loading = false;
-    //   const errorMessage = event.error.msg ? event.error.msg : 'Upss Error con el servidor!';
-    //   this.toastr.error(errorMessage, 'Error');
-    // });
+    });
 
   }
 
-  msjError(e: HttpErrorResponse) {
-    const errorMessage = e.error.msg ? e.error.msg : 'Upss Error con el servidor!';
-    this.toastr.error(errorMessage, 'Error');
-  }
 
 }
