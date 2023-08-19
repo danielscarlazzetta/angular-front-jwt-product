@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CrearProductoComponent } from './components/crear-producto/crear-producto.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { CrearProductoComponent } from './components/crear-producto/crear-produc
       preventDuplicates: true,
     }),
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

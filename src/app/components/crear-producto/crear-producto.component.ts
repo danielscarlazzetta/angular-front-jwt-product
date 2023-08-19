@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product.interfaces';
 import { ErrorServicesService } from 'src/app/services/error.services.service';
-import { UserService } from 'src/app/services/user.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-crear-producto',
@@ -20,7 +20,7 @@ export class CrearProductoComponent {
   category: string = '';
 
   constructor(  private toastr: ToastrService,
-                private _userService: UserService,
+                private _productService: ProductService,
                 private router: Router,
                 private _errorService : ErrorServicesService) {
   }
@@ -41,7 +41,7 @@ export class CrearProductoComponent {
       category: this.category,
     } 
 
-    this._userService.createProducts(fieldsProduct).subscribe({
+    this._productService.createProducts(fieldsProduct).subscribe({
       next: (v) => {
         this.toastr.success(`El producto ${this.name} se registro con exito!`, 'Registro');
         this.router.navigate(['/dashboard']);
@@ -52,9 +52,6 @@ export class CrearProductoComponent {
       complete: () => console.info('complete')
     });
   }
-
-
-
 }
 
 

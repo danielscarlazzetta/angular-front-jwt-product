@@ -1,7 +1,8 @@
 export const environment = {
-    production: false,
-    endpoint: 'http://localhost:3001/',
-    apiUsers: 'api/users/',
-    apiProducts: 'api/products/create/',
-    apiToken: 'api/users/login/'
-  };
+  apiToken: 'api/users/login/',
+  endpoint: 'http://localhost:3001/',
+  production: false,
+  apiUsers: 'api/users/',
+  apiCreateProducts: 'api/products/create/',
+  apiGetAllProduct: 'api/products/'
+};
