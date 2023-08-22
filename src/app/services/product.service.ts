@@ -22,7 +22,7 @@ export class ProductService {
 
   getAllProduct(): Observable<Product[]>{
     // const token = localStorage.getItem('token');
-    // const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    // const header = new HttpHeaders().set('authorization', `Bearer ${token}`);
     // return  this.http.get<Product[]>(`${this.myAppUrl}${this.apiAllProduct}`, {header : header});
     return  this.http.get<Product[]>(`${this.myAppUrl}${this.apiAllProduct}`);
   }

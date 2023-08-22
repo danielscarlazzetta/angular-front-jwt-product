@@ -9,7 +9,12 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
   constructor(private router : Router){
+  }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
   }
 
   logOut(){

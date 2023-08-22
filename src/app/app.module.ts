@@ -40,7 +40,9 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     }),
   ],
   providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true
+    provide: HTTP_INTERCEPTORS,
+    useClass: AddTokenInterceptor,
+    multi: true,
   }],
   bootstrap: [AppComponent]
 })
