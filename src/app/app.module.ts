@@ -39,11 +39,13 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
       preventDuplicates: true,
     }),
   ],
-  providers: [{
+  providers: [
+  {
     provide: HTTP_INTERCEPTORS,
     useClass: AddTokenInterceptor,
     multi: true,
-  }],
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

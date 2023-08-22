@@ -19,13 +19,12 @@ export class AddTokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
-    const token = localStorage.getItem('token');
-    console.log('antes de ver que dice el token');
-    console.log(token);
+    const token : any = localStorage.getItem('token');
+    console.warn('aqui va el token')
+    console.warn(token)
 
     if(token) {
-      console.log('asdasdasd')
-      request = request.clone({ setHeaders: { authorization: `Bearer ${token}` } })
+      request = request.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
     }
 
     //return next.handle(request);

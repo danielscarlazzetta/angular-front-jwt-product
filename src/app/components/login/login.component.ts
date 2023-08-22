@@ -17,18 +17,18 @@ export class LoginComponent {
   password: string = '';
   loading: boolean = false;
 
-  constructor( private toastr: ToastrService,
-               private _userServices : UserService,
-               private router : Router,
-               private _errorService : ErrorServicesService){
+  constructor(private toastr: ToastrService,
+    private _userServices: UserService,
+    private router: Router,
+    private _errorService: ErrorServicesService) {
   }
 
-  login(){
-    if(this.username == '' || this.password == ''){
+  login() {
+    if (this.username == '' || this.password == '') {
       this.toastr.error(`Todos los campos son obligatorios`, 'Error');
       return;
     }
-    const user : User = {
+    const user: User = {
       username: this.username,
       password: this.password,
     }
@@ -36,8 +36,9 @@ export class LoginComponent {
     this.loading = true;
 
     this._userServices.login(user).subscribe({
-      next: (token) => {
-        localStorage.setItem('token', token);
+      next: (response) => {
+        console.log(response)
+        localStorage.setItem('token', response);
         this.router.navigate(['/dashboard']);
         this.toastr.success(`Bienvenido ${this.username}`, 'Bienvenido!');
       },
@@ -48,5 +49,5 @@ export class LoginComponent {
     });
   }
 
-  
+
 }
